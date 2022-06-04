@@ -1,24 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import { CounterContext } from './CounterContext';
+import { useState } from 'react';
+import Book from './Book';
 
 function App() {
+  const [counter, setCounter] = useState(0)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <CounterContext.Provider value={{ counter, setCounter }}>
+      <div className="App">
+        <h1>App component</h1>
+        
+        <button type="button" class="btn btn-success">Green</button>
+        <button type="button" class="btn btn-warning">Yellow</button>
+        <button type="button" class="btn btn-primary">BLue</button>
+        
+        <div style={{width: '100%', float:'left', marginTop: '10px'}}>
+          <Book />
+          <Book />
+          <Book />
+          <Book />
+        </div>
+      </div>
+    </CounterContext.Provider>
   );
 }
 
